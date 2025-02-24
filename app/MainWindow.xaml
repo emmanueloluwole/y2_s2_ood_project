@@ -1,0 +1,23 @@
+﻿<Window x:Class="app.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:app"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Background="Black">
+    <!--<TabControl TabStripPlacement="Top">
+        <TabItem Header="hOME" Width="50">
+           
+        </TabItem>
+    </TabControl>-->
+    <Grid>
+        <Label x:Name="lblDocuments" Content="Documents"   VerticalAlignment="Top" Margin="21,28,649,0" Height="40" FontSize="22" FontWeight="Bold" Foreground="white"/>
+        <Button x:Name="btnDate" Content="Date" HorizontalAlignment="Left" Margin="300,76,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnName" Content="Name" HorizontalAlignment="Left" Margin="329,76,0,0" VerticalAlignment="Top"/>
+        <Image HorizontalAlignment="Left" Height="28" Margin="726,20,0,0" VerticalAlignment="Top" Width="38" Source="/Images/settingsIcon.png" RenderTransformOrigin="5.536,-1.569"/>
+
+
+
+    </Grid>
+</Window>
