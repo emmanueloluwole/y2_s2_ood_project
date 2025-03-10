@@ -51,11 +51,21 @@ namespace app
 
         private void lbxDocuments_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //create new window
-            Window2 window2 = new Window2();
+            Document selected = lbxDocuments.SelectedItem as Document;
 
-            //set owner of new window
-            window2.Owner = this;
+            if (selected != null)
+            {
+                //create new window
+                Window2 window2 = new Window2(selected);
+
+                //set owner of new window
+                window2.Owner = this;
+
+                //display new window
+                window2.ShowDialog();
+            }
+            
+
         }
     }
 }
