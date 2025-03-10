@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:app"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Background="Black">
-    <!--<TabControl TabStripPlacement="Top">
-        <TabItem Header="hOME" Width="50">
-           
-        </TabItem>
-    </TabControl>-->
+        Title="MainWindow" Height="450" Width="800">
+   
     <Grid>
-        <Label x:Name="lblDocuments" Content="Documents"   VerticalAlignment="Top" Margin="21,28,649,0" Height="40" FontSize="22" FontWeight="Bold" Foreground="white"/>
-        <Button x:Name="btnDate" Content="Date" HorizontalAlignment="Left" Margin="300,76,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnName" Content="Name" HorizontalAlignment="Left" Margin="329,76,0,0" VerticalAlignment="Top"/>
-        <Image HorizontalAlignment="Left" Height="28" Margin="726,20,0,0" VerticalAlignment="Top" Width="38" Source="/Images/settingsIcon.png" RenderTransformOrigin="5.536,-1.569"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
 
+        <Label Grid.Row="0" Content="Document"></Label>
 
+        <ListBox x:Name="lbxDocuments" Grid.Row="1" Margin="10" SelectionChanged="lbxDocuments_SelectionChanged" DisplayMemberPath="Title"></ListBox>
+
+        <Button x:Name="btnAdd" Content="Add" Width="75" Click="btnAdd_Click"/>
 
     </Grid>
 </Window>
