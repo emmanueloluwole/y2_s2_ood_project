@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 
 namespace app
 {
@@ -54,6 +55,8 @@ namespace app
             using (db)
             {
                 Document d = new Document() { Id=id, Title = title, Details = detials, CreatedDate = DateTime.Now };
+
+                db.Documents.AddOrUpdate(d);
 
                
                 db.SaveChanges();
