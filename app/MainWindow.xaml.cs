@@ -67,5 +67,21 @@ namespace app
             
 
         }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            //Player selected = lbxSelectedPlayers.SelectedItem as Player;
+            Document selected = lbxDocuments.SelectedItem as Document;
+
+            //check nut null
+            if (selected != null)//ensure something is selected
+            {
+             
+                
+
+                
+            }
+        }
+
     }
 }

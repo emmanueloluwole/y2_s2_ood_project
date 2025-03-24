@@ -11,13 +11,23 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
             <RowDefinition Height="80*"/>
+            
+            
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
         <Label Grid.Row="0" Content="Document"></Label>
 
         <ListBox x:Name="lbxDocuments" Grid.Row="1" Margin="10" SelectionChanged="lbxDocuments_SelectionChanged" DisplayMemberPath="Title"></ListBox>
 
-        <Button x:Name="btnAdd" Content="Add" Width="75" Click="btnAdd_Click"/>
+        <Button x:Name="btnAdd"  Content="Add" Width="75" Click="btnAdd_Click"/>
+        <Button x:Name="btnDelete" Grid.Column="1" Grid.Row="1" Content="Delete" Width="50" Height="30" Click="btnDelete_Click" />
+
+
+
 
     </Grid>
 </Window>
