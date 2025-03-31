@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -24,13 +25,13 @@ namespace app
 
         public List<Document> documents;
 
-        DocumentData db=new DocumentData();
+        DocumentData db = new DocumentData();
         public MainWindow()
         {
             InitializeComponent();
 
-            var query1= from d in db.Documents
-                        select d;
+            var query1 = from d in db.Documents
+                         select d;
 
             documents = query1.ToList();
 
@@ -49,7 +50,34 @@ namespace app
             window1.ShowDialog();
         }
 
-        private void lbxDocuments_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            //Player selected = lbxSelectedPlayers.SelectedItem as Player;
+            Document selected = lbxDocuments.SelectedItem as Document;
+
+            //check nut null
+            if (selected != null)//ensure something is selected
+            {
+
+                documents.Remove(selected);
+
+                //delete from db
+                db.Documents.Remove(selected);
+                db.SaveChanges();
+
+                lbxDocuments.ItemsSource = null;
+                lbxDocuments.ItemsSource = documents;
+
+            }
+
+
+        }
+
+
+
+        private void lbxDocuments_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Document selected = lbxDocuments.SelectedItem as Document;
 
@@ -64,24 +92,35 @@ namespace app
                 //display new window
                 window2.ShowDialog();
             }
-            
-
         }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            //Player selected = lbxSelectedPlayers.SelectedItem as Player;
-            Document selected = lbxDocuments.SelectedItem as Document;
+            List<Document> searchResult = new List<Document>();
+            string searchText = tbxSearch.Text.ToLower();
 
-            //check nut null
-            if (selected != null)//ensure something is selected
+            if (searchText != null)
             {
-             
-                
+                foreach (Document d in documents)
+                {
+                    if (d.Title.Contains(searchText))
+                    {
+                        searchResult.Add(d);
+                        
+                    }
 
-                
+                }
+
             }
+            lbxDocuments.ItemsSource = null;
+            lbxDocuments.ItemsSource= searchResult;
+           
+
+
+
+
         }
+
 
     }
 }
