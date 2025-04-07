@@ -41,7 +41,7 @@ namespace app
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             //create new window
-            Window1 window1 = new Window1();
+            AddWindow window1 = new AddWindow();
 
             //set owner of new window
             window1.Owner = this;
@@ -63,8 +63,10 @@ namespace app
 
                 documents.Remove(selected);
 
+                Document docToDelete= db.Documents.Find(selected.Id);
+
                 //delete from db
-                db.Documents.Remove(selected);
+                db.Documents.Remove(docToDelete);
                 db.SaveChanges();
 
                 lbxDocuments.ItemsSource = null;
@@ -84,7 +86,7 @@ namespace app
             if (selected != null)
             {
                 //create new window
-                Window2 window2 = new Window2(selected);
+                EditWindow window2 = new EditWindow(selected);
 
                 //set owner of new window
                 window2.Owner = this;
@@ -101,9 +103,12 @@ namespace app
 
             if (searchText != null)
             {
+
+               
+
                 foreach (Document d in documents)
                 {
-                    if (d.Title.Contains(searchText))
+                    if (d.Title.ToLower().Contains(searchText))
                     {
                         searchResult.Add(d);
                         

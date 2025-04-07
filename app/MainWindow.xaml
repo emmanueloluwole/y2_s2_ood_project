@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800"
         WindowStartupLocation="CenterScreen">
    
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
             <RowDefinition Height="80*"/>
@@ -20,17 +20,25 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Content="Document"></Label>
+        <Label Grid.Row="0" Content="Document" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" FontWeight="Bold" />
 
-        <ListBox x:Name="lbxDocuments" Grid.Row="1" Margin="10" DisplayMemberPath="Title" MouseDoubleClick="lbxDocuments_MouseDoubleClick"/>
+        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1" Margin="10">
 
-        <Button x:Name="btnAdd"  Content="Add" Width="75" Click="btnAdd_Click" Height="30"/>
-        <Button x:Name="btnDelete" Grid.Column="1" Grid.Row="1" Content="Delete" Width="50" Height="30" Click="btnDelete_Click" />
+            <ListBox x:Name="lbxDocuments"  Margin="10" DisplayMemberPath="Title" MouseDoubleClick="lbxDocuments_MouseDoubleClick"/>
+        </Border>
+        <Button x:Name="btnAdd" Grid.Column="1" Grid.Row="1" Content="Create New Document" Width="200" Click="btnAdd_Click" Height="30" Margin="0,0,0,103"/>
+        <Button x:Name="btnDelete" Grid.Column="1" Grid.Row="1" Content="Delete" Width="200" Height="30" Click="btnDelete_Click" Margin="0,150,0,0" />
 
+
+        <StackPanel Orientation="Horizontal" Grid.Column="1">
+
+                <TextBox x:Name="tbxSearch"  Margin="10" Width="200"   />
+           
+            <Button x:Name="btnSearch" Content="Search" Width="80" Height="30" Click="btnSearch_Click"></Button>
+
+
+        </StackPanel>
         
-        <TextBox x:Name="tbxSearch" Grid.Column="1" Margin="30" Width="200"  />
-        <Button x:Name="btnSearch" Content="Search" Grid.Column="1" Width="50" Height="30" Margin="250,0,0,0" Click="btnSearch_Click"></Button>
-
       
 
 

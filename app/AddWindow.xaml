@@ -1,11 +1,11 @@
-﻿<Window x:Class="app.Window1"
+﻿<Window x:Class="app.AddWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:app"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="800"
+        Title="AddWidow" Height="450" Width="800"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -19,8 +19,9 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="tbxTitle" Text="title" Grid.Row="0" Grid.Column="0" Width="120" Margin="20" ></TextBox>
-        <TextBox x:Name="tbxDetails" Margin="20" Grid.Row="1" Grid.Column="0" ></TextBox>
+        <TextBox x:Name="tbxTitle" Text="Title" Grid.Row="0" Grid.Column="0" Width="120" Margin="20" FontWeight="Bold" ></TextBox>
+        
+        <TextBox x:Name="tbxDetails" Margin="20" Grid.Row="1" Grid.Column="0" />
         <Button x:Name="btnAdd" Content="add" Grid.Column="1" Grid.Row="2" Click="btnAdd_Click"></Button>
         <!--<TextBox HorizontalAlignment="Left" Margin="106,68,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Margin="106,107,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="493" Height="275"/>-->

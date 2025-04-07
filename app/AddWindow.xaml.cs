@@ -12,37 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
 
 namespace app
 {
     /// <summary>
-    /// Interaction logic for Window2.xaml
+    /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window2 : Window
+    public partial class AddWindow : Window
     {
-        private int id;
-
         DocumentData db = new DocumentData();
-        public Window2()
+        public AddWindow()
         {
             InitializeComponent();
+
+
         }
 
-        public Window2(Document selected) :this()
-        {
-            tbxTitle.Text = selected.Title;
-            tbxDetails.Text = selected.Details;
-
-            id = selected.Id;
-    
-
-
-
-
-    }
-
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             //read the data from the screen
             string title = tbxTitle.Text;
@@ -50,31 +36,22 @@ namespace app
             string detials = tbxDetails.Text;
 
 
-           
-
+            //create the object
+            
             using (db)
             {
-                Document d = new Document() { Id=id, Title = title, Details = detials, CreatedDate = DateTime.Now };
+                Document d = new Document() { Title=title, Details=detials, CreatedDate=DateTime.Now};
 
-                db.Documents.AddOrUpdate(d);
-
-               
+                //add the object to the db
+                db.Documents.Add(d);
+                //save
                 db.SaveChanges();
 
                 //update
-                
-             
                 MainWindow main = this.Owner as MainWindow;
-                
+                main.documents.Add(d);
                 main.lbxDocuments.ItemsSource = null;
-                
-                
-                var query = from docs in db.Documents
-                            select docs;
-
-                var results = query.ToList();
-                
-                main.lbxDocuments.ItemsSource = results;
+                main.lbxDocuments.ItemsSource = main.documents;
             }
 
 
@@ -82,6 +59,11 @@ namespace app
 
             //close the window 
             this.Close();
+
+
+            
+
+
         }
     }
 }
