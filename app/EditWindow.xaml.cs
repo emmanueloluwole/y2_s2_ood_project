@@ -32,6 +32,7 @@ namespace app
 
         public EditWindow(Document selected) : this()
         {
+            
             tbxTitle.Text = selected.Title;
             tbxDetails.Text = selected.Details;
 

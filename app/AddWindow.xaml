@@ -21,9 +21,9 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="tbxTitle" Text="Title" Grid.Row="0" Grid.Column="0" Margin="20" FontWeight="Bold" Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+        <TextBox x:Name="tbxTitle" Text="Title" Grid.Row="0" Grid.Column="0" Margin="20" FontWeight="Bold" Style="{StaticResource MaterialDesignOutlinedTextBox}" FontSize="14" />
 
-        <TextBox x:Name="tbxDetails" Margin="20" Grid.Row="1" Grid.Column="0" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+        <TextBox x:Name="tbxDetails" Margin="20" Grid.Row="1" Grid.Column="0" Style="{StaticResource MaterialDesignOutlinedTextBox}" Padding="10,10,10,7" VerticalContentAlignment="Top" FontSize="16" HorizontalContentAlignment="Stretch" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
         <Button x:Name="btnAdd" Content="add" Grid.Column="1" Grid.Row="2" Click="btnAdd_Click"/>
         <!--<TextBox HorizontalAlignment="Left" Margin="106,68,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox HorizontalAlignment="Left" Margin="106,107,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="493" Height="275"/>-->

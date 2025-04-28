@@ -23,68 +23,12 @@
             </Grid.RowDefinitions>
 
 
-        <TextBox x:Name="tbxTitle" Text="" Grid.Row="0" Grid.Column="0" Width="120" Margin="20" Style="{StaticResource MaterialDesignOutlinedTextBox}" ></TextBox>
-        <TextBox x:Name="tbxDetails" Margin="20" Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Visible" Style="{StaticResource MaterialDesignOutlinedTextBox}" ></TextBox>
+        <TextBox x:Name="tbxTitle" Text="" Grid.Row="0" Grid.Column="0" Margin="20" Style="{StaticResource MaterialDesignOutlinedTextBox}" FontSize="16" FontWeight="Bold" />
+        <TextBox x:Name="tbxDetails" Margin="20" Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Style="{StaticResource MaterialDesignOutlinedTextBox}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top" FontSize="16" />
         <Button x:Name="btnSave" Content="save" Grid.Column="1" Grid.Row="2" Click="btnSave_Click" />
         <Button x:Name="btnDelete" Grid.Column="0" Grid.Row="2" Content="Delete" Width="80" Height="30" Click="btnDelete_Clickk" />
     </Grid>
-    <!--<Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80*"/>
-            <ColumnDefinition Width="20*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="70*"/>
-            <RowDefinition Height="10*"/>
-        </Grid.RowDefinitions>
 
-        --><!-- Title TextBox --><!--
-        <TextBox x:Name="tbxTitle"
-             Text=""
-             Grid.Row="0"
-             Grid.Column="0"
-             Margin="20"
-             Width="Auto"
-             Style="{StaticResource MaterialDesignOutlinedTextBox}"
-             materialDesign:HintAssist.Hint="Enter title..." />
-
-        --><!-- Details TextBox --><!--
-        <TextBox x:Name="tbxDetails"
-             Margin="20"
-             Grid.Row="1"
-             Grid.Column="0"
-             VerticalScrollBarVisibility="Visible"
-             AcceptsReturn="True"
-             Style="{StaticResource MaterialDesignOutlinedTextBox}"
-             materialDesign:HintAssist.Hint="Enter description or notes..." />
-
-        --><!-- Save Button --><!--
-        <Button x:Name="btnSave"
-            Content="Save"
-            Grid.Column="1"
-            Grid.Row="2"
-            Width="100"
-            Height="40"
-            Margin="10"
-      Style="{StaticResource MaterialDesignRaisedButton}"
-            Background="{DynamicResource PrimaryHueMidBrush}"
-              Foreground="Red"
-            Click="btnSave_Click" />
-
-        --><!-- Delete Button --><!--
-        <Button x:Name="btnDelete"
-            Content="Delete"
-            Grid.Column="0"
-            Grid.Row="2"
-            Width="100"
-            Height="40"
-            Margin="10"
-              Style="{StaticResource MaterialDesignRaisedButton}"
-            Foreground="Red"
-            Click="btnDelete_Clickk" />
-
-    </Grid>-->
 
 
 </Window>
