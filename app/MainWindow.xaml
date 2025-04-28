@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:app"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"  WindowState="Maximized" >
    
     <Grid >
         <Grid.RowDefinitions>
@@ -32,7 +32,7 @@
 
         <StackPanel Orientation="Horizontal" Grid.Column="1">
 
-                <TextBox x:Name="tbxSearch"  Margin="10" Width="200"   />
+            <TextBox x:Name="tbxSearch"  Margin="10" Width="200"   Style="{StaticResource MaterialDesignOutlinedTextBox}" Height="30"/>
            
             <Button x:Name="btnSearch" Content="Search" Width="80" Height="30" Click="btnSearch_Click"></Button>
 

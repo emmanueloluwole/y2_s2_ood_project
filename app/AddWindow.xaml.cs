@@ -35,31 +35,44 @@ namespace app
 
             string detials = tbxDetails.Text;
 
-
-            //create the object
-            
-            using (db)
+            // Check if the fields are valid (not empty)
+            if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(detials))
             {
-                Document d = new Document() { Title=title, Details=detials, CreatedDate=DateTime.Now};
+                MessageBox.Show("Title and details cannot be empty.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return; // Exit if fields are empty
+            }
 
-                //add the object to the db
-                db.Documents.Add(d);
-                //save
-                db.SaveChanges();
+            //exception handling
+            try
+            {
+                //create the object
 
-                //update
-                MainWindow main = this.Owner as MainWindow;
-                main.documents.Add(d);
-                main.lbxDocuments.ItemsSource = null;
-                main.lbxDocuments.ItemsSource = main.documents;
+                using (db)
+                {
+                    Document d = new Document() { Title = title, Details = detials, CreatedDate = DateTime.Now };
+
+                    //add the object to the db
+                    db.Documents.Add(d);
+                    //save
+                    db.SaveChanges();
+
+                    //update
+                    MainWindow main = this.Owner as MainWindow;
+                    main.documents.Add(d);
+                    main.lbxDocuments.ItemsSource = null;
+                    main.lbxDocuments.ItemsSource = main.documents;
+                }
+                //close the window 
+                this.Close();
             }
 
 
 
-
-            //close the window 
-            this.Close();
-
+            catch (Exception ex)
+            {
+                // Handle any unexpected exceptions
+                MessageBox.Show("An error occurred while adding the document: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
             
 

@@ -54,25 +54,47 @@ namespace app
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            //Player selected = lbxSelectedPlayers.SelectedItem as Player;
-            Document selected = lbxDocuments.SelectedItem as Document;
-
-            //check nut null
-            if (selected != null)//ensure something is selected
+            //exception handling
+            try
             {
+                // Get the selected document from the ListBox
+                Document selected = lbxDocuments.SelectedItem as Document;
 
-                documents.Remove(selected);
+                // Check if something is selected
+                if (selected != null)
+                {
+                    // Remove from the local list of documents
+                    documents.Remove(selected);
 
-                Document docToDelete= db.Documents.Find(selected.Id);
+                    // Find the document in the database by its ID
+                    Document docToDelete = db.Documents.Find(selected.Id);
 
-                //delete from db
-                db.Documents.Remove(docToDelete);
-                db.SaveChanges();
+                    // Ensure the document exists in the database before attempting deletion
+                    if (docToDelete != null)
+                    {
+                        // Remove the document from the database
+                        db.Documents.Remove(docToDelete);
 
-                lbxDocuments.ItemsSource = null;
-                lbxDocuments.ItemsSource = documents;
+                        // Save changes to the database
+                        db.SaveChanges();
 
+                        // Update the ListBox's ItemsSource to reflect the changes
+                        lbxDocuments.ItemsSource = null;
+                        lbxDocuments.ItemsSource = documents;
+                    }
+                }
+                else
+                {
+                    // Handle case where no document was selected
+                    MessageBox.Show("Please select a document to delete.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
+            catch (Exception ex)
+            {
+                // Handle any unexpected exceptions
+                MessageBox.Show("An error occurred while deleting the document: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
 
 
         }
@@ -95,31 +117,55 @@ namespace app
                 window2.ShowDialog();
             }
         }
-
+        //method to seach document
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
+
             List<Document> searchResult = new List<Document>();
-            string searchText = tbxSearch.Text.ToLower();
+            string searchText = string.Empty;
 
-            if (searchText != null)
+            try
             {
+                // Make sure to safely get the search text, trimming leading/trailing spaces and converting to lowercase
+                searchText = tbxSearch.Text.ToLower().Trim();
 
-               
-
-                foreach (Document d in documents)
+                // Check if searchText is not empty
+                if (!string.IsNullOrEmpty(searchText))
                 {
-                    if (d.Title.ToLower().Contains(searchText))
+                    foreach (Document d in documents)
                     {
-                        searchResult.Add(d);
-                        
+                        // Ensure the Title is not null before trying to use it
+                        if (!string.IsNullOrEmpty(d.Title) && d.Title.ToLower().Contains(searchText))
+                        {
+                            searchResult.Add(d);
+                        }
                     }
-
                 }
-
+                //seen this online about showbox and it format, handy to use than console.writeline
+                else
+                {
+                    // If the search text is empty, show a warning (optional)
+                    MessageBox.Show("Please enter a search term.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
-            lbxDocuments.ItemsSource = null;
-            lbxDocuments.ItemsSource= searchResult;
-           
+            catch (Exception ex)
+            {
+                // Handle any unexpected exceptions
+                MessageBox.Show("An error occurred while searching: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                // Ensure the ListBox shows the full list of documents after the error
+                searchResult.Clear();
+                searchResult.AddRange(documents);  // Add the full list of documents back to the searchResult
+            }
+            finally
+            {
+                // This will always execute, even if there's an exception, to update the ListBox
+                lbxDocuments.ItemsSource = null;  // Clear existing items
+                //    lbxDocuments.ItemsSource = searchResult;  // Set new filtered list,  i used this before but it doesnt display the list of old documents after i search for null 
+                lbxDocuments.ItemsSource = searchResult.Count > 0 ? searchResult : documents;  // If searchResult has items, show those; otherwise, show the full list of documents
+            }
+
+
 
 
 
