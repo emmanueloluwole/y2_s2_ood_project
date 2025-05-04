@@ -142,11 +142,7 @@ namespace app
                     }
                 }
                 //seen this online about showbox and it format, handy to use than console.writeline
-                else
-                {
-                    // If the search text is empty, show a warning (optional)
-                    MessageBox.Show("Please enter a search term.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
+               
             }
             catch (Exception ex)
             {
@@ -163,6 +159,7 @@ namespace app
                 lbxDocuments.ItemsSource = null;  // Clear existing items
                 //    lbxDocuments.ItemsSource = searchResult;  // Set new filtered list,  i used this before but it doesnt display the list of old documents after i search for null 
                 lbxDocuments.ItemsSource = searchResult.Count > 0 ? searchResult : documents;  // If searchResult has items, show those; otherwise, show the full list of documents
+                
             }
 
 
